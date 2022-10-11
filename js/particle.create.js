@@ -8,7 +8,7 @@ var particle_config = {
             }
         },
         "color": {
-            "value": Math.floor(Math.random()*16777215).toString(16)
+            "value": "white"
         },
         "shape": {
             "type": "circle",
@@ -32,7 +32,7 @@ var particle_config = {
             }
           },
           "size": {
-            "value": 2
+            "value": 3
             ,
             "random": true,
             "anim": {
@@ -113,8 +113,35 @@ var particle_config = {
     retina_detect: true
 }
 
-window.onload  = function()
-{
 
+
+    
+    var color_pairs = 
+    [
+      ["#1ecbe1", "#1EE196"],
+      ["#EF3310", "#EFA310"],
+      ["#21DE6B", "#94DE21"],
+      ["#2252DD","#22DDAD"],
+      ["#98F00F", "#F0D70F"]
+
+    ]
+
+    selected_pair = color_pairs[Math.floor(Math.random() * color_pairs.length)]
+    particle_config.particles.color.value = selected_pair
     particlesJS("particles", particle_config)
-}
+    const selected_index = [Math.round(Math.random())]
+    if (selected_index != 0)
+    {
+      temp = selected_pair[0]
+      selected_pair[0] = selected_pair[1]
+      selected_pair[1] = temp
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      var elements = document.querySelectorAll('a');
+      var count = 0;
+      [].forEach.call(elements, function(value){
+        value.style.color = count % 2 == 0 ? selected_pair[0] : selected_pair[1]
+        count++;
+      });
+   });
