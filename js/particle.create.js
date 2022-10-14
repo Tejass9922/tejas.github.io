@@ -44,7 +44,7 @@ var particle_config = {
           },
 
           "line_linked": {
-            "enable": true,
+            "enable": false,
             "distance": 150,
             "color": "#8e8e8e",
             "opacity": 0.4,
@@ -52,7 +52,7 @@ var particle_config = {
           },
           "move": {
             "enable": true,
-            "speed": 5,
+            "speed": 6,
             "direction": "none",
             "random": false,
             "straight": false,
@@ -130,6 +130,7 @@ var particle_config = {
     particle_config.particles.color.value = selected_pair
     particlesJS("particles", particle_config)
     const selected_index = [Math.round(Math.random())]
+
     if (selected_index != 0)
     {
       temp = selected_pair[0]
